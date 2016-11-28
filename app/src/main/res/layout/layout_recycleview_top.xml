@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/include_header_shadow"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/erv_layout_recycle_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+        <ImageView
+            android:id="@+id/iv_to_top_layout_recycle_top"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@mipmap/campusactivities_back2x"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="bottom|right"/>
+    </FrameLayout>
+</LinearLayout>

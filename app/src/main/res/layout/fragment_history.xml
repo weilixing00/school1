@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+ 
+<include layout="@layout/include_header_noshadow"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical">
+        <EditText
+            android:id="@+id/et_fragment_history"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:paddingLeft="18dp"
+            android:hint="输入主题/主讲人/校区/时间/地点"
+            android:textSize="15sp"
+            android:textColorHint="#c3c3c3"
+            android:background="@drawable/bg_et_history"/>
+        <ImageView
+            android:id="@+id/iv_fragment_history"
+            android:layout_width="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/search_search2x"/>
+    </LinearLayout>
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/erv_fragment_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

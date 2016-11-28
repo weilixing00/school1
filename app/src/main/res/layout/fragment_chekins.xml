@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/include_header_shadow"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  * 请根据讲课的实际开始,借宿时间签到与签退,否则失败~"
+        android:textColor="@color/shadowGray"
+        android:textSize="11sp"
+        android:layout_marginLeft="15dp"/>
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/erv_fragment_checkins"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tab_select">#1f9cd6</color>
+    <color name="deepGray">#646464</color>
+    <color name="blue">#1196d4</color>
+    <color name="blueButton">#37b9f5</color>
+    <color name="likeBlack">#323232</color>
+    <color name="shadowGray">#969696</color>
+    <color name="inputGray">#f0eeee</color>
+    <color name="lineGray">#eaeaea</color>
+    <color name="tvRed">#f60063</color>
+    <color name="photopicker_background">#181819</color>
+
+</resources>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="165dp"
+	android:layout_marginBottom="10dp"
+	android:layout_marginLeft="10dp"
+	android:layout_marginRight="10dp"
+	android:background="@drawable/bg_item_shadow_round"
+	android:paddingLeft="10dp"
+	>
+
+	<TextView
+		android:id="@+id/del1_item_erv_fragment_credit_detail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="15dp"
+		android:text="项目编号"
+		android:textColor="@color/likeBlack"
+		android:textSize="11sp"
+		/>
+
+	<TextView
+		android:id="@+id/tv_number_item_erv_fragment_credit_detail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10dp"
+		android:layout_marginTop="15dp"
+		android:layout_toRightOf="@id/del1_item_erv_fragment_credit_detail"
+		android:textColor="@color/likeBlack"
+		android:textSize="11sp"
+		tools:text="0123"
+		/>
+
+	<TextView
+		android:id="@+id/tv_time_item_erv_fragment_credit_detail"
+		style="@style/tv_11_gray"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="15dp"
+		android:layout_marginTop="15dp"
+		android:textColor="@color/shadowGray"
+		tools:text="0123"
+		/>
+
+	<View
+		android:id="@+id/del2_item_erv_fragment_credit_detail"
+		style="@style/style_line_gray"
+		android:layout_below="@id/tv_time_item_erv_fragment_credit_detail"
+		android:layout_marginBottom="10dp"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginTop="10dp"
+		/>
+
+	<TextView
+		android:id="@+id/del3_item_erv_fragment_credit_detail"
+		style="@style/tv_11_gray"
+		android:layout_below="@id/del2_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="15dp"
+		android:text="项目名称"
+		/>
+
+	<TextView
+		android:id="@+id/tv_project_name_item_erv_fragment_credit_detail"
+		style="@style/tv_11_black"
+		android:layout_below="@id/del2_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="6dp"
+		android:layout_toRightOf="@id/del3_item_erv_fragment_credit_detail"
+		tools:text="0123"
+		/>
+
+	<TextView
+		android:id="@+id/del4_name_item_erv_fragment_credit_detail"
+		style="@style/tv_11_gray"
+		android:layout_below="@id/tv_project_name_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="6dp"
+		android:text="学校类别"
+		/>
+
+	<TextView
+		android:id="@+id/tv_credit_type_item_erv_fragment_credit_detail"
+		style="@style/tv_11_black"
+		android:layout_below="@id/tv_project_name_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="6dp"
+		android:layout_marginTop="6dp"
+		android:layout_toRightOf="@id/del4_name_item_erv_fragment_credit_detail"
+		tools:text="0123"
+		/>
+
+	<TextView
+		android:id="@+id/del5_name_item_erv_fragment_credit_detail"
+		style="@style/tv_11_gray"
+		android:layout_below="@id/del4_name_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="6dp"
+		android:text="项目等级"
+		/>
+
+	<TextView
+		android:id="@+id/tv_project_level_type_item_erv_fragment_credit_detail"
+		style="@style/tv_11_black"
+		android:layout_below="@id/del4_name_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="6dp"
+		android:layout_marginTop="6dp"
+		android:layout_toRightOf="@id/del4_name_item_erv_fragment_credit_detail"
+		tools:text="0123"
+		/>
+
+	<TextView
+		android:id="@+id/del6_name_item_erv_fragment_credit_detail"
+		style="@style/tv_11_gray"
+		android:layout_below="@id/del5_name_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="15dp"
+		android:layout_marginTop="6dp"
+		android:text="项目年份"
+		/>
+
+	<TextView
+		android:id="@+id/tv_project_year_type_item_erv_fragment_credit_detail"
+		style="@style/tv_11_black"
+		android:layout_below="@id/del5_name_item_erv_fragment_credit_detail"
+		android:layout_marginLeft="6dp"
+		android:layout_marginTop="6dp"
+		android:layout_toRightOf="@id/del4_name_item_erv_fragment_credit_detail"
+		tools:text="0123"
+		/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginBottom="5dp"
+		>
+	<TextView
+		android:id="@+id/tv_score_item_erv_fragment_credit_detail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+
+		android:textColor="@color/tab_select"
+		android:textSize="50sp"
+		android:textStyle="bold"
+		android:text="3"
+		/>
+
+	<TextView
+		android:id="@+id/del7_name_item_erv_fragment_credit_detail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="top"
+		android:layout_marginRight="15dp"
+		android:text="分"
+		android:textStyle="normal"
+		android:textColor="@color/tab_select"
+		android:textSize="30sp"
+		/>
+	</LinearLayout>
+</RelativeLayout>

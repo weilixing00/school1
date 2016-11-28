@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	>
+	
+	<include layout="@layout/include_header_shadow"/>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="70dp"
+	    android:orientation="horizontal"
+	    android:layout_marginLeft="15dp"
+	    android:gravity="center_vertical"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    android:text="手机号"
+		    android:textColor="@color/likeBlack"
+		    android:textSize="14sp"
+			/>
+		<EditText
+			android:id="@+id/et_phone_num_fragment_reset_psw"
+			android:layout_marginLeft="15dp"
+			android:background="@null"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+		    android:hint="请输入绑定的手机号码"
+		    android:textColorHint="@color/shadowGray"
+			android:inputType="number"
+		    android:textSize="14sp"
+			/>
+	</LinearLayout>
+	<View
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		style="@style/style_line_gray"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:orientation="horizontal"
+		android:layout_marginLeft="15dp"
+		android:gravity="center_vertical"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="验证码"
+			android:textColor="@color/likeBlack"
+			android:textSize="14sp"
+			/>
+		<EditText
+			android:id="@+id/et_msg_code_fragment_reset_psw"
+			android:layout_marginLeft="15dp"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:background="@null"
+
+			android:layout_height="wrap_content"
+			android:hint="请输入短信验证码"
+			android:inputType="number"
+			android:textColorHint="@color/shadowGray"
+			android:textSize="14sp"
+			/>
+		<Button
+			android:id="@+id/bt_fetch_msg_code_fragment_reset_psw"
+			style="@style/style_bt_msg_code" />
+	</LinearLayout>
+	<View
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		style="@style/style_line_gray"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:orientation="horizontal"
+		android:layout_marginLeft="15dp"
+		android:gravity="center_vertical"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="    密码"
+			android:textColor="@color/likeBlack"
+			android:textSize="14sp"
+			/>
+		<EditText
+			android:id="@+id/et_psw_fragment_reset_psw"
+			android:layout_marginLeft="15dp"
+			android:layout_width="0dp"
+			android:layout_weight="1"
+			android:background="@null"
+			android:layout_height="wrap_content"
+			android:hint="请输入密码"
+			android:textColorHint="@color/shadowGray"
+			android:textSize="14sp"
+			/>
+		<ImageView
+			android:id="@+id/iv_psw_show_fragment_reset_psw"
+			android:layout_width="22dp"
+			android:layout_height="22dp"
+		    android:src="@mipmap/resetpassword_notshow2x"
+		    android:layout_marginRight="15dp"
+			/>
+	</LinearLayout>
+<View
+	android:layout_width="match_parent"
+	android:layout_height="0dp"
+	android:layout_weight="1"/>
+	<Button
+		android:id="@+id/bt_ok_fragment_reset_psw"
+		android:text="确定"
+		style="@style/style_bt_bottom" />
+
+</LinearLayout>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:tools="http://schemas.android.com/tools">
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools"
+	>
+
+<LinearLayout
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<include layout="@layout/include_header_noshadow"/>
+	<ImageView
+		android:id="@+id/iv_picturefragment_campagion_content"
+		android:layout_width="match_parent"
+		android:layout_height="200dp"
+	    android:background="@mipmap/background"
+		/>
+
+	<TextView
+		android:id="@+id/tv_title_fragment_campagion_content"
+		android:layout_margin="15dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    tools:text="2016年第三节中国电影"
+	    android:textColor="@color/tab_select"
+	    android:textStyle="bold"
+	    android:textSize="20sp"
+		/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="15dp"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    android:text="时间:   "
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+		<TextView
+			android:id="@+id/tv_date_fragment_campagion_content"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    tools:text="2000:"
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+		<TextView
+			android:id="@+id/tv_time_fragment_campagion_content"
+			android:layout_marginLeft="10dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    tools:text="时间:"
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="15dp"
+	    android:layout_marginTop="15dp"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    android:text="地点:   "
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+		<TextView
+			android:id="@+id/tv_address_fragment_campagion_content"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    tools:text="地理位置"
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:layout_marginLeft="15dp"
+	    android:layout_marginTop="15dp"
+		>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    android:text="主办方:   "
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+		<TextView
+			android:id="@+id/tv_host_name_fragment_campagion_content"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		    tools:text="主办方名称"
+		    android:textSize="11sp"
+		    android:textColor="@color/shadowGray"
+			/>
+	</LinearLayout>
+	<View
+	android:layout_margin="15dp"
+		style="@style/style_line_gray"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginBottom="21dp"
+	    android:text="活动介绍"
+	    android:textSize="16sp"
+	    android:textColor="@color/likeBlack"
+		/>
+	<TextView
+		android:id="@+id/tv_campagion_info_fragment_campagion_content"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="15dp"
+		android:layout_marginRight="15dp"
+	    tools:text="活动介绍内容"
+	    android:textSize="15sp"
+	    android:textColor="@color/likeBlack"
+		/>
+
+</LinearLayout>
+</ScrollView>
+
+	<LinearLayout
+		android:layout_gravity="bottom"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<ImageView
+			android:id="@+id/iv_to_top_fragment_activity_content"
+			android:layout_width="55dp"
+			android:layout_height="55dp"
+			android:layout_marginBottom="15dp"
+			android:layout_marginRight="6dp"
+			android:layout_gravity="right|bottom"
+			android:src="@mipmap/campusactivities_back2x"
+			/>
+		<View
+			style="@style/style_line_gray"/>
+
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="45dp"
+			android:orientation="horizontal"
+			android:gravity="center_vertical"
+		    android:background="#99ffffff"
+			>
+			<ImageView
+				android:id="@+id/iv_collect_fragment_campagion_content"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:layout_marginLeft="15dp"
+				android:src="@mipmap/activity_like_click2x"
+				/>
+			<View
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="wrap_content"/>
+			<ImageView
+				android:id="@+id/iv_share_fragment_campagion_content"
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:layout_marginRight="15dp"
+				android:src="@mipmap/activity_share_normal2x"
+				/>
+
+
+		</LinearLayout>
+
+	</LinearLayout>
+</FrameLayout>

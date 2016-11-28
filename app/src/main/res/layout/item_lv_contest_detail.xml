@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<ImageView
+	android:id="@+id/iv_del_item_lv_contest_detail"
+	android:layout_width="17dp"
+	android:layout_height="17dp"
+    android:src="@mipmap/contestdetails_del"
+	/>
+	<EditText
+		android:id="@+id/et_item_lv_contest_detail"
+		android:layout_marginLeft="25dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="请输入学号"
+		android:textColor="@color/deepGray"
+		android:textColorHint="@color/shadowGray"
+		android:background="@null"
+		android:textSize="15sp"/>
+</LinearLayout>

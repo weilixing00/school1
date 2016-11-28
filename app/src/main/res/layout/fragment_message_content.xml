@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+<include layout="@layout/include_header_shadow"/>
+<LinearLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+	>
+	<TextView
+		android:text="时间:   "
+		style="@style/tv_11_gray"
+		/>
+	<TextView
+		android:id="@+id/tv_date_fragment_message_content"
+		tools:text="日期 "
+		style="@style/tv_11_gray"
+		/>
+	<TextView
+		android:id="@+id/tv_time_fragment_message_content"
+		tools:text="时间 "
+		android:layout_marginLeft="10dp"
+		style="@style/tv_11_gray"
+		/>
+
+</LinearLayout>
+	<TextView
+		android:id="@+id/tv_content_fragment_message_content"
+		android:layout_marginTop="19dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    android:textColor="@color/likeBlack"
+	    android:layout_marginLeft="15dp"
+	    android:layout_marginRight="15dp"
+	    android:lineSpacingExtra="10dp"
+	    android:textSize="14sp"
+		/>
+</LinearLayout>

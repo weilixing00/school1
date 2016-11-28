@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="80dp">
+<ImageView
+	android:id="@+id/iv_item_erv_fragment_message"
+	android:layout_width="45dp"
+	android:layout_height="45dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="10dp"
+    android:src="@mipmap/newsicon_news"
+    android:layout_centerVertical="true"
+	/>
+
+		<TextView
+			android:id="@+id/tv_title_item_erv_fragment_message"
+			android:layout_toRightOf="@id/iv_item_erv_fragment_message"
+			android:layout_marginTop="21dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+		    android:text="系统消息"
+		    android:textColor="@color/tab_select"
+		    android:textSize="14sp"
+			/>
+		<TextView
+			android:layout_toRightOf="@id/iv_item_erv_fragment_message"
+			android:layout_below="@id/tv_title_item_erv_fragment_message"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="8dp"
+		    android:text="系统消息"
+		    android:textSize="15sp"
+		    android:textColor="@color/likeBlack"
+			/>
+	<TextView
+		android:id="@+id/tv_date_item_erv_fragment_message"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="21dp"
+		android:layout_marginRight="15dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    android:text="2016"
+		/>
+	<View
+		android:layout_alignParentBottom="true"
+		style="@style/style_line_gray"/>
+</RelativeLayout>
