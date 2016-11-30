@@ -23,7 +23,7 @@
 		android:layout_height="115dp"
 		android:layout_gravity="center_horizontal"
 		android:layout_marginTop="40dp"
-		android:background="@mipmap/ic_launcher"
+		android:background="@mipmap/login_logo"
 		/>
 
 	<LinearLayout

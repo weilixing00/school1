@@ -7,14 +7,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
 import com.example.administrator.school.bean.LecturesProjectsBean;
+import com.example.administrator.school.constant.KeyConstant;
+import com.example.administrator.school.event.StartBrotherEvent;
+import com.example.administrator.school.mvp.course.coursedetail.CourseDetailFragment;
+import com.example.administrator.school.mvp.course.courseedit.CourseEditFragment;
 import com.example.administrator.school.mvp.course.lectures.adapter.LecturesProjectsAdapter;
 import com.example.administrator.school.utils.JUtils;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +67,22 @@ public class LecturesProjectsFragment extends BaseFragment implements RecyclerAr
         erv.setAdapterWithProgress(adapter = new LecturesProjectsAdapter(getContext(),this));
         adapter.setMore(R.layout.view_more, this);
         adapter.setNoMore(R.layout.view_nomore);
+        adapter.buttonSetOnclick(new LecturesProjectsAdapter.ButtonInterface() {
+            @Override
+            public void onclick(View view, int position) {
+                if (view.getId()==R.id.iv_edit_item_erv_item_fragment_lecture_projects){
+                    Toast.makeText(_mActivity, "编辑", Toast.LENGTH_SHORT).show();
+
+                                    EventBus.getDefault().post(new StartBrotherEvent(CourseEditFragment.newInstance()));
+                }
+                if (view.getId()==R.id.iv_book_item_erv_item_fragment_lecture_projects){
+                    Toast.makeText(_mActivity, "预定", Toast.LENGTH_SHORT).show();
+                    Bundle bundle=new Bundle();
+                    bundle.putString(KeyConstant.BundleKey.SOURCE,"LecturesProjectsFragment");
+                    EventBus.getDefault().post(new StartBrotherEvent(CourseDetailFragment.newInstance(bundle)));
+                }
+            }
+        });
 //        adapter.setOnItemLongClickListener(new RecyclerArrayAdapter.OnItemLongClickListener() {
 //            @Override
 //            public boolean onItemLongClick(int position) {
@@ -91,7 +114,7 @@ public class LecturesProjectsFragment extends BaseFragment implements RecyclerAr
         adapter.clear();
         List<LecturesProjectsBean> items=new ArrayList<>();
         items.add(new LecturesProjectsBean());
-        items.add(new LecturesProjectsBean());
+//        items.add(new LecturesProjectsBean());
         adapter.addAll(items);
     }
 

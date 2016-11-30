@@ -47,6 +47,7 @@
                     android:textColor="@color/deepGray"
                     android:textSize="15sp"/>
                 <TextView
+                    android:id="@+id/tv_year_fragment_contest_detail"
                     android:layout_marginLeft="25dp"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -75,6 +76,7 @@
                     android:textColor="@color/deepGray"
                     android:textSize="15sp"/>
                 <TextView
+                    android:id="@+id/tv_date_fragment_contest_detail"
                     android:layout_marginLeft="25dp"
                     android:layout_width="0dp"
                     android:layout_weight="1"

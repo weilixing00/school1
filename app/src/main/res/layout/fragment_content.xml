@@ -3,12 +3,18 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
-<com.jude.easyrecyclerview.EasyRecyclerView
-
-	android:id="@+id/erv"
+<include layout="@layout/include_header_shadow"/>
+<ScrollView
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-
-	/>
+	>
+	<TextView
+		android:id="@+id/tv_content_fragment_content"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+	    android:paddingLeft="15dp"
+	    android:paddingRight="15dp"
+	    android:paddingBottom="20dp"
+		/>
+</ScrollView>
 </LinearLayout>

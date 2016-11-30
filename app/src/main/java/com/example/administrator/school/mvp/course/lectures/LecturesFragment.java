@@ -31,17 +31,6 @@ import me.yokeyword.fragmentation.SupportFragment;
 public class LecturesFragment extends BaseFragment {
 
 
-    @BindView(R.id.iv_back_header_noshodow)
-    ImageView ivBackHeaderNoshodow;
-    @BindView(R.id.tv_middle_header_noshodow)
-    TextView tvMiddleHeaderNoshodow;
-    @BindView(R.id.tv_right_header_noshodow)
-    TextView tvRightHeaderNoshodow;
-    @BindView(R.id.tab_fragment_lectures)
-    TabLayout tabFragmentLectures;
-    @BindView(R.id.vp_fragment_lectures)
-    ViewPager vpFragmentLectures;
-
 
     public static SupportFragment newInstance() {
         LecturesFragment fragment=new LecturesFragment();
@@ -85,6 +74,20 @@ public class LecturesFragment extends BaseFragment {
             }
         }
     };
+
+
+
+
+    @BindView(R.id.iv_back_header_noshodow)
+    ImageView ivBackHeaderNoshodow;
+    @BindView(R.id.tv_middle_header_noshodow)
+    TextView tvMiddleHeaderNoshodow;
+    @BindView(R.id.tv_right_header_noshodow)
+    TextView tvRightHeaderNoshodow;
+    @BindView(R.id.tab_fragment_lectures)
+    TabLayout tabFragmentLectures;
+    @BindView(R.id.vp_fragment_lectures)
+    ViewPager vpFragmentLectures;
 
 
 }

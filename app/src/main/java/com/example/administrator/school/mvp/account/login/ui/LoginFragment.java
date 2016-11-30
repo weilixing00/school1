@@ -51,15 +51,15 @@ public class LoginFragment extends BaseFragment implements ILoginContract.View {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        statusBarTranspare();
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        com.example.administrator.school.mvp.account.login.presenter.LoginPresenter
-        presenter = new LoginPresenter(this);
         ButterKnife.bind(this, view);
+        presenter = new LoginPresenter(this);
         initView();
         return view;
     }
 
     private void initView() {
         btLoginFragmentLogin.setOnClickListener(clickListener);
+        tvForgetPswFragmentLogin.setOnClickListener(clickListener);
     }
 
     @Override
@@ -83,10 +83,15 @@ public class LoginFragment extends BaseFragment implements ILoginContract.View {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
+                //登录
                 case R.id.bt_login_fragment_login:
-                    String username = etUsernameFragmentLogin.getText().toString().trim();
-                    String psw = etPswFragmentLogin.getText().toString().trim();
-                    presenter.login(username, psw);
+                    //正常版本之后解除注释
+//                    String username = etUsernameFragmentLogin.getText().toString().trim();
+//                    String psw = etPswFragmentLogin.getText().toString().trim();
+//                    presenter.login(username, psw);
+
+                    //测试的逻辑  正常版本之后删掉
+                    start(MainFragment.newInstance(0));
                     break;
                 //忘记密码
                 case R.id.tv_forget_psw_fragment_login:

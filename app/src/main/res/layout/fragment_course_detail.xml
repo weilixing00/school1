@@ -18,6 +18,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:orientation="vertical"
+		    android:paddingBottom="15dp"
 			>
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -37,7 +38,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="讲座类型"
+				android:text="考研"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -61,7 +62,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="申报单位"
+				android:text="科技学院数字媒体班"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -85,7 +86,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="主讲人"
+				android:text="李雷"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -109,7 +110,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="主讲介绍"
+				android:text="中国高级考研数学辅导专家，当年考研数学满分状元，全国考研数学阅卷组专家成员，人民网，新华网，腾讯，新浪等六大媒体特邀考研高级专家"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -133,7 +134,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="校区"
+				android:text="小河山校区"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -159,7 +160,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="场地地址"
+				android:text="计算机数字媒体教室"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -183,7 +184,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="讲座时间"
+				android:text="2016-12-05  9：50"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -207,7 +208,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介内容简介"
+				android:text="汇集了众多国内一线顶级名师，及昂立教育“研复班”考研集训营独特的辅导模式，开设精英小班授课、一对一专职答疑、优秀管理经验的专职班主任严格把关，学习成绩在不同阶段的辅导中都有大幅的提高，考研过关率高达95%以上"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 			    android:lineSpacingExtra="5dp"
@@ -254,7 +255,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="额定人数"
+				android:text="200"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>
@@ -278,7 +279,7 @@
 				android:layout_marginLeft="15dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-			    tools:text="已定人数"
+				android:text="120"
 			    android:textSize="15dp"
 			    android:textColor="@color/likeBlack"
 				/>

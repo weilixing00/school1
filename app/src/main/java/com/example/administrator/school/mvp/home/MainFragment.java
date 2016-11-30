@@ -1,6 +1,5 @@
 package com.example.administrator.school.mvp.home;
 
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,8 +40,8 @@ public class MainFragment extends BaseFragment {
 
 
     public static MainFragment newInstance(int index) {
-        Bundle args = new Bundle();
-        args.putInt(KeyConstant.BundleKeyConstant.INDEX,index);
+        android.os.Bundle args = new android.os.Bundle();
+        args.putInt(KeyConstant.BundleKey.INDEX,index);
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
         return fragment;
@@ -50,7 +49,7 @@ public class MainFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable android.os.Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         if (savedInstanceState == null) {
@@ -84,7 +83,7 @@ public class MainFragment extends BaseFragment {
                 .addItem(new BottomBarTab(_mActivity, R.mipmap.index_massage_click2x, "签到"))
                 .addItem(new BottomBarTab(_mActivity, R.mipmap.index_accountr_normal2x, "我"));
 
-        int index = getArguments().getInt(KeyConstant.BundleKeyConstant.INDEX);
+        int index = getArguments().getInt(KeyConstant.BundleKey.INDEX);
         mBottomBar.setCurrentItem(index);
 
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
@@ -113,7 +112,7 @@ public class MainFragment extends BaseFragment {
 
 
     @Override
-    protected void onFragmentResult(int requestCode, int resultCode, Bundle data) {
+    protected void onFragmentResult(int requestCode, int resultCode, android.os.Bundle data) {
         super.onFragmentResult(requestCode, resultCode, data);
         if (requestCode == REQ_MSG && resultCode == RESULT_OK) {
 

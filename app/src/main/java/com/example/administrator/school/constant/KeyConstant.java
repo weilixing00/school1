@@ -9,7 +9,7 @@ public interface KeyConstant {
     /**
      * intent传递数据的key常量
      */
-    interface IntentKeyConstant{
+    interface IntentKey {
 
         String MAINACTIIVTY_INDEX = "index";
         String ACCOUNT_SHOW_PAGE = "account_page";
@@ -20,7 +20,7 @@ public interface KeyConstant {
     /**
      * bundle传递数据的key常量
      */
-    interface BundleKeyConstant{
+    interface BundleKey {
 
         String FANINCING_LIST_INDEX = "index";
         String SOURCE = "source_fragment_show";
@@ -35,14 +35,14 @@ public interface KeyConstant {
     /**
      * 网络请求参数的key常量
      */
-    interface ParamsKeyConstant{
+    interface Params {
 
     }
 
     /**
      * SP中的key常量
      */
-    interface  SPKeyConstant{
+    interface SP {
 
         String USER_TEL_NUM = "user_tel_num";
         String LOGIN_STATUS = "login_status";

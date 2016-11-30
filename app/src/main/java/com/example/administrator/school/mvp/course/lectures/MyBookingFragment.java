@@ -1,6 +1,5 @@
 package com.example.administrator.school.mvp.course.lectures;
 
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,10 +10,15 @@ import android.view.ViewGroup;
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
 import com.example.administrator.school.bean.MyBookingBean;
+import com.example.administrator.school.constant.KeyConstant;
+import com.example.administrator.school.event.StartBrotherEvent;
+import com.example.administrator.school.mvp.course.coursedetail.CourseDetailFragment;
 import com.example.administrator.school.mvp.course.lectures.adapter.MyBookingAdapter;
 import com.example.administrator.school.utils.JUtils;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +44,7 @@ public class MyBookingFragment extends BaseFragment implements RecyclerArrayAdap
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable android.os.Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_recycleview, container, false);
         ButterKnife.bind(this, view);
         initRecycleView();
@@ -70,7 +74,15 @@ public class MyBookingFragment extends BaseFragment implements RecyclerArrayAdap
 
             }
         });
-
+        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                android.os.Bundle bundle=new android.os.Bundle();
+                bundle.putString(KeyConstant.BundleKey.SOURCE,"MyBookingFragment");
+                EventBus.getDefault().post(new StartBrotherEvent(CourseDetailFragment.newInstance(bundle)));
+//                start(CourseDetailFragment.newInstance(bundle));
+            }
+        });
 
         erv.setRefreshListener(this);
         onRefresh();

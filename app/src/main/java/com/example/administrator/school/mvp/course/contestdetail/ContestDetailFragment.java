@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bigkoo.pickerview.OptionsPickerView;
+import com.bigkoo.pickerview.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
@@ -49,7 +52,9 @@ import org.json.JSONArray;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +66,7 @@ import butterknife.ButterKnife;
  */
 
 public class ContestDetailFragment extends BaseFragment {
+
 
 
     private MyListViewAdapter adapter;
@@ -75,7 +81,7 @@ public class ContestDetailFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable android.os.Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contest_detail, container, false);
         ButterKnife.bind(this, view);
         initView();
@@ -87,18 +93,18 @@ public class ContestDetailFragment extends BaseFragment {
         tvMiddleHeader.setText("竞赛项目");
         ivBackHeader.setOnClickListener(noDoubleClick);
         tvRightHeaderShadow.setOnClickListener(noDoubleClick);
-        llChooseDateFragmentContestDetail.setOnClickListener(noDoubleClick);
-        llChooseYearFragmentContestDetail.setOnClickListener(noDoubleClick);
-        llProjectContentFragmentContestDetail.setOnClickListener(noDoubleClick);
-        ivDeclareTypePersonFragmentContestDetail.setOnClickListener(clickListener);
-        tvDeclareTypePersonFragmentContestDetail.setOnClickListener(clickListener);
-        ivDeclareTypeGroupFragmentContestDetail.setOnClickListener(clickListener);
-        tvDeclareTypeGroupFragmentContestDetail.setOnClickListener(clickListener);
-        ivDeclareMemberAddFragmentContestDetail.setOnClickListener(clickListener);
+        llChooseDate.setOnClickListener(noDoubleClick);
+        llChooseYear.setOnClickListener(noDoubleClick);
+        llProjectContent.setOnClickListener(noDoubleClick);
+        ivDeclareTypePerson.setOnClickListener(clickListener);
+        tvDeclareTypePerson.setOnClickListener(clickListener);
+        ivDeclareTypeGroup.setOnClickListener(clickListener);
+        tvDeclareTypeGroup.setOnClickListener(clickListener);
+        ivDeclareMemberAdd.setOnClickListener(clickListener);
         JUtils.hideKeyboard(getActivity());//默认关闭输入法
         adapter = new MyListViewAdapter(items);
-        lvGroupFragmentContestDetail.setAdapter(adapter);
-        JUtils.setListViewHeight(lvGroupFragmentContestDetail, adapter, items.size());
+        lvGroup.setAdapter(adapter);
+        JUtils.setListViewHeight(lvGroup, adapter, items.size());
 
         int cols = getResources().getDisplayMetrics().widthPixels / getResources().getDisplayMetrics().densityDpi;
         cols = cols < 3 ? 3 : cols;//或者修改为3
@@ -109,8 +115,8 @@ public class ContestDetailFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String imgs = (String) parent.getItemAtPosition(position);
-                if ("000000".equals(imgs) ){
-                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootviewFragmentContestDetail, "从相册选择", "拍照");
+                if ("000000".equals(imgs)) {
+                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootview, "从相册选择", "拍照");
                     likeIosPopupWindow.t1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -142,7 +148,7 @@ public class ContestDetailFragment extends BaseFragment {
                             String filePath = fileUri.getEncodedPath();
                             imagePaths.add(filePath);
                             adapter.notifyDataSetChanged();
-                            KLog.e("filePath="+filePath+" bitmap ="+bitmap.getByteCount());
+                            KLog.e("filePath=" + filePath + " bitmap =" + bitmap.getByteCount());
                             String imagePath = Uri.decode(filePath);
                             //todo 上传头像到服务器
 //                uploadHeadIcon(imagePath);
@@ -156,7 +162,7 @@ public class ContestDetailFragment extends BaseFragment {
 //                    intent.setMaxTotal(8); // 最多选择照片数量，默认为6  这个地方修改了之后adapter里面也要跟着修改
 //                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
 //                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
-                }else{
+                } else {
                     PhotoPreviewIntent intent = new PhotoPreviewIntent(getContext());
                     intent.setCurrentItem(position);
                     intent.setPhotoPaths(imagePaths);
@@ -195,7 +201,7 @@ public class ContestDetailFragment extends BaseFragment {
                     break;
                 //完成
                 case R.id.tv_right_header_shadow:
-                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootviewFragmentContestDetail, "提交", "保存");
+                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootview, "提交", "保存");
                     likeIosPopupWindow.t1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -208,17 +214,17 @@ public class ContestDetailFragment extends BaseFragment {
                         public void onClick(View view) {
                             Toast.makeText(_mActivity, "保存", Toast.LENGTH_SHORT).show();
                             likeIosPopupWindow.dismiss();
-                            rootviewFragmentContestDetail.setBackgroundColor(Color.WHITE);
+                            rootview.setBackgroundColor(Color.WHITE);
                         }
                     });
                     //背景变灰
-//                    rootviewFragmentContestDetail.setBackgroundColor(Color.parseColor("#66666666"));
+//                    rootview.setBackgroundColor(Color.parseColor("#66666666"));
 
                     likeIosPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
                         @Override
                         public void onDismiss() {
                             KLog.e("条框消失！");
-                            rootviewFragmentContestDetail.setBackgroundColor(Color.WHITE);
+                            rootview.setBackgroundColor(Color.WHITE);
                         }
                     });
 
@@ -226,17 +232,18 @@ public class ContestDetailFragment extends BaseFragment {
                     break;
                 //项目年份
                 case R.id.ll_choose_year_fragment_contest_detail:
-
-
+                    JUtils.hideKeyboard(getActivity());//先隐藏软键盘
+                    projectYears();
                     break;
                 //选择日期
                 case R.id.ll_choose_date_fragment_contest_detail:
-
+                    JUtils.hideKeyboard(getActivity());//先隐藏软键盘
+                    date();
                     break;
                 //项目内容
                 case R.id.ll_project_content_fragment_contest_detail:
 //                    start(ProjectContentFragment.newInstance());
-                    String content = tvProjectNameFragmentContestDetail.getText().toString().trim();
+                    String content = tvProjectName.getText().toString().trim();
                     if ("请输入项目内容".equals(content)) {
                         content = "";
                     }
@@ -247,6 +254,79 @@ public class ContestDetailFragment extends BaseFragment {
     };
 
 
+    /**
+     * 选择日期
+     */
+    private void date() {
+        TimePickerView pvTime = new TimePickerView(getContext(), TimePickerView.Type.YEAR_MONTH_DAY);
+        //控制时间范围
+        pvTime.setRange(getCurrentYear()- 10, getCurrentYear()+10);//要在setTime 之前才有效果
+        pvTime.setTime(new Date());
+
+        pvTime.setCyclic(true);
+        pvTime.setCancelable(true);
+        //时间选择后回调
+        pvTime.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+
+            @Override
+            public void onTimeSelect(Date date) {
+                tvDate.setText(getTime(date));
+            }
+        });
+        pvTime.show();
+    }
+
+    /**
+     * 选择项目年份
+     */
+    private void projectYears() {
+        //选项选择器
+        OptionsPickerView pvOptions = new OptionsPickerView(getContext());
+
+        final ArrayList<String> years = getYears();
+        pvOptions.setPicker(years);
+        pvOptions.setOnoptionsSelectListener(new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int option2, int options3) {
+                String year = years.get(options1);
+                tvYear.setText(year);
+            }
+        });
+        pvOptions.setSelectOptions(10);
+        pvOptions.setTitle("选择年份");
+        pvOptions.show();
+    }
+
+    /**
+     * 年份的数据源  到时候根据实际需求更改
+     * @return
+     */
+    @NonNull
+    private ArrayList<String> getYears() {
+        final ArrayList<String> years = new ArrayList<>();
+        //获取当前系统年份
+        int year = getCurrentYear();
+        KLog.e("现在的年份  year=" + year);
+        for (int i = 0; i < 20; i++) {
+            years.add((year - 10 + i) + "年");
+        }
+        return years;
+    }
+
+    /**
+     * 获取系统当前年份
+     * @return
+     */
+    private int getCurrentYear() {
+        Time t = new Time(); // or Time t=new Time("GMT+8"); 加上Time Zone资料
+        t.setToNow(); // 取得系统时间。
+        return t.year;
+    }
+
+    public static String getTime(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(date);
+    }
 
 
     private Uri mDestinationUri;
@@ -264,7 +344,8 @@ public class ContestDetailFragment extends BaseFragment {
         startActivityForResult(takeIntent, CAMERA_REQUEST_CODE);
     }
 
-private String photoPath;
+    private String photoPath;
+
     @Override
     public void onResume() {
         super.onResume();
@@ -274,7 +355,6 @@ private String photoPath;
         mTempPhotoPath = Environment.getExternalStorageDirectory() + File.separator + "photo.jpeg";
 //        fetchSexAndDetailAddress();
     }
-
 
 
     /**
@@ -288,9 +368,8 @@ private String photoPath;
                 .withAspectRatio(1, 1)
                 .withMaxResultSize(512, 512)
                 .withTargetActivity(CropActivity.class)
-                .start(getContext(),this);
+                .start(getContext(), this);
     }
-
 
 
     /**
@@ -333,7 +412,7 @@ private String photoPath;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            KLog.e("resultUri="+resultUri+"   bitmap="+bitmap);
+            KLog.e("resultUri=" + resultUri + "   bitmap=" + bitmap);
             mOnPictureSelectedListener.onPictureSelected(resultUri, bitmap);
         } else {
             JUtils.Toast("无法剪切选择图片");
@@ -358,23 +437,17 @@ private String photoPath;
     }
 
 
-
-
-
-
-
-
     @Override
-    protected void onFragmentResult(int requestCode, int resultCode, Bundle data) {
+    protected void onFragmentResult(int requestCode, int resultCode, android.os.Bundle data) {
         super.onFragmentResult(requestCode, resultCode, data);
         KLog.e("onFragmentResult");
         if (requestCode == RESULT_OK && resultCode == RESULT_OK) {
-            String content = data.getString(KeyConstant.BundleKeyConstant.CONTENT);
+            String content = data.getString(KeyConstant.BundleKey.CONTENT);
             //如果输入界面删除了所有的内容 则显示默认提示 请输入项目内容
             if (TextUtils.isEmpty(content)) {
                 content = "请输入项目内容";
             }
-            tvProjectNameFragmentContestDetail.setText(content);
+            tvProjectName.setText(content);
         }
     }
 
@@ -383,7 +456,7 @@ private String photoPath;
         super.onActivityResult(requestCode, resultCode, data);
         KLog.e();
         Log.e("weilixing", "chengg1");
-        if(resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 // 选择照片
                 case REQUEST_CAMERA_CODE:
@@ -416,21 +489,21 @@ private String photoPath;
 
     }
 
-    private void loadAdpater(ArrayList<String> paths){
-        if (imagePaths!=null&& imagePaths.size()>0){
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        gridAdapter  = new GridAdapter(imagePaths);
+        gridAdapter = new GridAdapter(imagePaths);
         gridView.setAdapter(gridAdapter);
-        try{
+        try {
             JSONArray obj = new JSONArray(imagePaths);
             KLog.e(obj.toString());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -445,25 +518,25 @@ private String photoPath;
                 case R.id.iv_declare_type_person_fragment_contest_detail:
                 case R.id.tv_declare_type_person_fragment_contest_detail:
                     isChooseGroup = false;
-                    ivDeclareTypeGroupFragmentContestDetail.setImageResource(R.mipmap.contestdetails_chose2x);
-                    ivDeclareTypePersonFragmentContestDetail.setImageResource(R.mipmap.contestdetails_nochose2x);
-                    etPersonShowFragmentContestDetail.setVisibility(View.VISIBLE);
-                    llGroupChooseShowFragmentContestDetail.setVisibility(View.GONE);
+                    ivDeclareTypeGroup.setImageResource(R.mipmap.contestdetails_chose2x);
+                    ivDeclareTypePerson.setImageResource(R.mipmap.contestdetails_nochose2x);
+                    etPersonShow.setVisibility(View.VISIBLE);
+                    llGroupChooseShow.setVisibility(View.GONE);
                     break;
                 //团队  显示新增学号   隐藏输入学号对话框
                 case R.id.tv_declare_type_group_fragment_contest_detail:
                 case R.id.iv_declare_type_group_fragment_contest_detail:
                     isChooseGroup = true;
-                    ivDeclareTypeGroupFragmentContestDetail.setImageResource(R.mipmap.contestdetails_nochose2x);
-                    ivDeclareTypePersonFragmentContestDetail.setImageResource(R.mipmap.contestdetails_chose2x);
-                    etPersonShowFragmentContestDetail.setVisibility(View.GONE);
-                    llGroupChooseShowFragmentContestDetail.setVisibility(View.VISIBLE);
+                    ivDeclareTypeGroup.setImageResource(R.mipmap.contestdetails_nochose2x);
+                    ivDeclareTypePerson.setImageResource(R.mipmap.contestdetails_chose2x);
+                    etPersonShow.setVisibility(View.GONE);
+                    llGroupChooseShow.setVisibility(View.VISIBLE);
                     break;
                 //增加团队成员
                 case R.id.iv_declare_member_add_fragment_contest_detail:
                     items.add(new ContestContent());
                     adapter.notifyDataSetChanged();
-                    JUtils.setListViewHeight(lvGroupFragmentContestDetail, adapter, items.size());
+                    JUtils.setListViewHeight(lvGroup, adapter, items.size());
                     break;
             }
         }
@@ -514,7 +587,7 @@ private String photoPath;
                     KLog.e("items.get(i).etContent=" + items.get(i).etContent + "  i=" + i);
                     items.remove(i);
                     adapter.notifyDataSetChanged();
-                    JUtils.setListViewHeight(lvGroupFragmentContestDetail, adapter, items.size());
+                    JUtils.setListViewHeight(lvGroup, adapter, items.size());
                 }
             });
             return view;
@@ -546,20 +619,22 @@ private String photoPath;
         }
     }
 
-    private class GridAdapter extends BaseAdapter{
+    private class GridAdapter extends BaseAdapter {
         private ArrayList<String> listUrls;
         private LayoutInflater inflater;
+
         public GridAdapter(ArrayList<String> listUrls) {
             this.listUrls = listUrls;
-            if(listUrls.size() == 7){
-                listUrls.remove(listUrls.size()-1);
+            if (listUrls.size() == 7) {
+                listUrls.remove(listUrls.size() - 1);
             }
             inflater = LayoutInflater.from(getContext());
         }
 
-        public int getCount(){
-            return  listUrls.size();
+        public int getCount() {
+            return listUrls.size();
         }
+
         @Override
         public String getItem(int position) {
             return listUrls.get(position);
@@ -575,17 +650,17 @@ private String photoPath;
             ViewHolder holder = null;
             if (convertView == null) {
                 holder = new ViewHolder();
-                convertView = inflater.inflate(R.layout.item_image, parent,false);
+                convertView = inflater.inflate(R.layout.item_image, parent, false);
                 holder.image = (ImageView) convertView.findViewById(R.id.imageView);
                 convertView.setTag(holder);
             } else {
-                holder = (ViewHolder)convertView.getTag();
+                holder = (ViewHolder) convertView.getTag();
             }
 
-            final String path=listUrls.get(position);
-            if (path.equals("000000")){
+            final String path = listUrls.get(position);
+            if (path.equals("000000")) {
                 holder.image.setImageResource(R.mipmap.editdetails_addpicture2x);
-            }else {
+            } else {
                 Glide.with(getContext())
                         .load(path)
                         .placeholder(R.mipmap.default_error)
@@ -596,6 +671,7 @@ private String photoPath;
             }
             return convertView;
         }
+
         class ViewHolder {
             ImageView image;
         }
@@ -611,41 +687,46 @@ private String photoPath;
     @BindView(R.id.layout_header)
     RelativeLayout layoutHeader;
     @BindView(R.id.tv_takeup_time_fragment_contest_detail)
-    TextView tvTakeupTimeFragmentContestDetail;
+    TextView tvTakeupTime;
     @BindView(R.id.ll_choose_year_fragment_contest_detail)
-    LinearLayout llChooseYearFragmentContestDetail;
+    LinearLayout llChooseYear;
     @BindView(R.id.ll_choose_date_fragment_contest_detail)
-    LinearLayout llChooseDateFragmentContestDetail;
+    LinearLayout llChooseDate;
     @BindView(R.id.iv_declare_type_person_fragment_contest_detail)
-    ImageView ivDeclareTypePersonFragmentContestDetail;
+    ImageView ivDeclareTypePerson;
     @BindView(R.id.tv_declare_type_person_fragment_contest_detail)
-    TextView tvDeclareTypePersonFragmentContestDetail;
+    TextView tvDeclareTypePerson;
     @BindView(R.id.iv_declare_type_group_fragment_contest_detail)
-    ImageView ivDeclareTypeGroupFragmentContestDetail;
+    ImageView ivDeclareTypeGroup;
     @BindView(R.id.tv_declare_type_group_fragment_contest_detail)
-    TextView tvDeclareTypeGroupFragmentContestDetail;
+    TextView tvDeclareTypeGroup;
     @BindView(R.id.et_person_show_fragment_contest_detail)
-    EditText etPersonShowFragmentContestDetail;
+    EditText etPersonShow;
     @BindView(R.id.iv_declare_member_add_fragment_contest_detail)
-    ImageView ivDeclareMemberAddFragmentContestDetail;
+    ImageView ivDeclareMemberAdd;
     @BindView(R.id.et_declare_member_add_fragment_contest_detail)
-    TextView etDeclareMemberAddFragmentContestDetail;
+    TextView etDeclareMemberAdd;
     @BindView(R.id.lv_group_fragment_contest_detail)
-    ListView lvGroupFragmentContestDetail;
+    ListView lvGroup;
     @BindView(R.id.ll_group_choose_show_fragment_contest_detail)
-    LinearLayout llGroupChooseShowFragmentContestDetail;
+    LinearLayout llGroupChooseShow;
     @BindView(R.id.et_teacher_fragment_contest_detail)
-    EditText etTeacherFragmentContestDetail;
+    EditText etTeacher;
     @BindView(R.id.et_reslut_name_fragment_contest_detail)
     EditText etReslutNameFragmentContestDetail;
     @BindView(R.id.tv_project_name_fragment_contest_detail)
-    TextView tvProjectNameFragmentContestDetail;
+    TextView tvProjectName;
     @BindView(R.id.ll_project_content_fragment_contest_detail)
-    LinearLayout llProjectContentFragmentContestDetail;
+    LinearLayout llProjectContent;
     @BindView(R.id.et_self_declare_fragment_contest_detail)
-    EditText etSelfDeclareFragmentContestDetail;
+    EditText etSelfDeclare;
     @BindView(R.id.gv_fragment_contest_detail)
     PhotoGridView gridView;
     @BindView(R.id.rootview_fragment_contest_detail)
-    LinearLayout rootviewFragmentContestDetail;
+    LinearLayout rootview;
+    @BindView(R.id.tv_year_fragment_contest_detail)
+    TextView tvYear;
+    @BindView(R.id.tv_date_fragment_contest_detail)
+    TextView tvDate;
+
 }

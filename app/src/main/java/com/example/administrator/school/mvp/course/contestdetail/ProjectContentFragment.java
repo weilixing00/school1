@@ -1,6 +1,5 @@
 package com.example.administrator.school.mvp.course.contestdetail;
 
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -40,15 +39,15 @@ public class ProjectContentFragment extends BaseFragment {
 
     public static ProjectContentFragment newInstance(String content) {
         ProjectContentFragment projectContentFragment = new ProjectContentFragment();
-        Bundle bundle=new Bundle();
-        bundle.putString(KeyConstant.BundleKeyConstant.CONTENT,content);
+        android.os.Bundle bundle=new android.os.Bundle();
+        bundle.putString(KeyConstant.BundleKey.CONTENT,content);
         projectContentFragment.setArguments(bundle);
         return projectContentFragment;
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable android.os.Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_project_content, container, false);
         ButterKnife.bind(this, view);
         initView();
@@ -58,7 +57,7 @@ public class ProjectContentFragment extends BaseFragment {
     private void initView() {
         tvMiddleHeader.setText("项目内容");
         tvRightHeaderShadow.setText("完成");
-        String content = getArguments().getString(KeyConstant.BundleKeyConstant.CONTENT);
+        String content = getArguments().getString(KeyConstant.BundleKey.CONTENT);
         etFragmentProjectContent.setText(content);
         ivBackHeader.setOnClickListener(new NoDoubleClickListener() {
             @Override
@@ -72,8 +71,8 @@ public class ProjectContentFragment extends BaseFragment {
             @Override
             public void onNoDoubleClick(View v) {
                 //完成
-                Bundle bundle=new Bundle();
-                bundle.putString(KeyConstant.BundleKeyConstant.CONTENT,etFragmentProjectContent.getText().toString().trim());
+                android.os.Bundle bundle=new android.os.Bundle();
+                bundle.putString(KeyConstant.BundleKey.CONTENT,etFragmentProjectContent.getText().toString().trim());
                 setFramgentResult(RESULT_OK,bundle);
                 JUtils.hideKeyboard(getActivity());
                 pop();

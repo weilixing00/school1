@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
+import com.example.administrator.school.constant.KeyConstant;
 import com.example.administrator.school.mvp.course.courseedit.CourseEditFragment;
+import com.example.administrator.school.mvp.other.ContentFragment;
 import com.example.administrator.school.utils.NoDoubleClickListener;
 
 import butterknife.BindView;
@@ -26,6 +28,68 @@ import butterknife.ButterKnife;
  */
 
 public class CourseDetailFragment extends BaseFragment {
+
+
+
+
+    public static CourseDetailFragment newInstance(android.os.Bundle bundle) {
+        CourseDetailFragment fragment=new CourseDetailFragment();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable android.os.Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_course_detail, container, false);
+        ButterKnife.bind(this, view);
+        initView();
+        return view;
+    }
+
+    private void initView() {
+        //未预定显示 编辑 已经预定 编辑 隐藏
+        tvRightHeaderShadow.setText("编辑");
+        tvMiddleHeader.setText("预定详情");
+        tvRightHeaderShadow.setOnClickListener(noDoubleClick);
+        ivBackHeader.setOnClickListener(noDoubleClick);
+        btBookingFragmentCourseDetail.setOnClickListener(noDoubleClick);
+        btDetailPlainFragmentCourseDetail.setOnClickListener(noDoubleClick);
+        Bundle arguments = getArguments();
+        if (arguments!=null){
+            String source = arguments.getString(KeyConstant.BundleKey.SOURCE);
+            if ("MyBookingFragment".equals(source)){
+                btBookingFragmentCourseDetail.setText("取消预定");
+                tvRightHeaderShadow.setVisibility(View.INVISIBLE);
+            }
+            else {
+                btBookingFragmentCourseDetail.setText("听课预定");
+            }
+        }
+    }
+    View.OnClickListener noDoubleClick=new NoDoubleClickListener() {
+        @Override
+        public void onNoDoubleClick(View v) {
+            switch (v.getId()){
+                case R.id.iv_back_header:
+                    pop();
+                    break;
+                //编辑  进入编辑界面
+                case R.id.tv_right_header_shadow:
+                    start(CourseEditFragment.newInstance());
+                    break;
+                //查看
+                case R.id.bt_detail_plain_fragment_course_detail:
+                    start(ContentFragment.newInstance());
+                    break;
+                //听课预定 或者 取消预定  考虑将预定状态保存在本地sp里面
+                case R.id.bt_booking_fragment_course_detail:
+
+                    break;
+            }
+        }
+    };
+
 
 
     @BindView(R.id.iv_back_header)
@@ -61,48 +125,4 @@ public class CourseDetailFragment extends BaseFragment {
     @BindView(R.id.bt_booking_fragment_course_detail)
     Button btBookingFragmentCourseDetail;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_course_detail, container, false);
-        ButterKnife.bind(this, view);
-        initView();
-        return view;
-    }
-
-    private void initView() {
-        //未预定显示 编辑 已经预定 编辑 隐藏
-        tvRightHeaderShadow.setText("编辑");
-        tvRightHeaderShadow.setOnClickListener(noDoubleClick);
-        ivBackHeader.setOnClickListener(noDoubleClick);
-        btBookingFragmentCourseDetail.setOnClickListener(noDoubleClick);
-        btDetailPlainFragmentCourseDetail.setOnClickListener(noDoubleClick);
-    }
-    View.OnClickListener noDoubleClick=new NoDoubleClickListener() {
-        @Override
-        public void onNoDoubleClick(View v) {
-            switch (v.getId()){
-                case R.id.iv_back_header:
-                    pop();
-                    break;
-                //编辑  进入编辑界面
-                case R.id.tv_right_header_shadow:
-                    start(CourseEditFragment.newInstance());
-                    break;
-                //查看
-                case R.id.bt_detail_plain_fragment_course_detail:
-
-                    break;
-                //听课预定 或者 取消预定  考虑将预定状态保存在本地sp里面
-                case R.id.bt_booking_fragment_course_detail:
-
-                    break;
-            }
-        }
-    };
-
-    public static CourseDetailFragment newInstance() {
-        CourseDetailFragment fragment=new CourseDetailFragment();
-        return fragment;
-    }
 }

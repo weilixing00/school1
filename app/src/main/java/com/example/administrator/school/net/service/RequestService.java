@@ -29,18 +29,18 @@ public interface RequestService {
 //     * 注册 发送短信验证码
 //     */
 //    @POST(HttpConstant.REGIST_MSG)
-//    Call<SimpleResponse> registMsgCode(@Field(KeyConstant.ParamsKeyConstant.MOBILE) String phoneNum, @Field(KeyConstant.ParamsKeyConstant.ACTION) String action);
+//    Call<SimpleResponse> registMsgCode(@Field(KeyConstant.Params.MOBILE) String phoneNum, @Field(KeyConstant.Params.ACTION) String action);
 //
 //
 //    /**
 //     * 注册
 //     */
 //    @POST(HttpConstant.REGIST)
-//    Call<SimpleResponse> regist(@Field(KeyConstant.ParamsKeyConstant.MOBILE) String phoneNum, @Field(KeyConstant.ParamsKeyConstant.MSGCODE) String msgCode, @Field(KeyConstant.ParamsKeyConstant.PSW_LOGIN) String psw);
+//    Call<SimpleResponse> regist(@Field(KeyConstant.Params.MOBILE) String phoneNum, @Field(KeyConstant.Params.MSGCODE) String msgCode, @Field(KeyConstant.Params.PSW_LOGIN) String psw);
 
 
     //第二种传递方式
-//    Call<LoginResponse> login(@Field(KeyConstant.ParamsKeyConstant.) String fields);
+//    Call<LoginResponse> login(@Field(KeyConstant.Params.) String fields);
 
 //    /**
 //     * 修改登录密码调用接口
