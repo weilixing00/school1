@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
+import com.example.administrator.school.utils.JUtils;
 import com.example.administrator.school.utils.NoDoubleClickListener;
 
 import butterknife.BindView;
@@ -63,6 +64,7 @@ public class ResetLoginPswFragment extends BaseFragment {
         ivBackHeader.setOnClickListener(new NoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
+                JUtils.hideKeyboard(getActivity());
                 pop();
             }
         });
@@ -80,9 +82,15 @@ public class ResetLoginPswFragment extends BaseFragment {
         });
     }
 
+////手机返回键默认的第一步都会隐藏软键盘 所以暂时不用处理硬件返回
+//    @Override
+//    public boolean onBackPressedSupport() {
+//        JUtils.hideKeyboard(getActivity());
+//        return super.onBackPressedSupport();
+//    }
 
     private boolean isShowPsw;
-
+    //控制密码显示隐藏
     private void showPsw() {
         if (isShowPsw) {
             //设置密码隐藏

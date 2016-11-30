@@ -1,7 +1,9 @@
 package com.example.administrator.school.mvp.home.me.ui;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
 import com.example.administrator.school.event.StartBrotherEvent;
 import com.example.administrator.school.mvp.account.accountdetail.ui.AccountDetailFragment;
+import com.example.administrator.school.mvp.account.login.ui.LoginFragment;
 import com.example.administrator.school.mvp.account.resetloginpsw.ResetLoginPswFragment;
 import com.example.administrator.school.mvp.account.resetphone.ui.ResetPhone1Fragment;
 import com.example.administrator.school.mvp.other.aboutsoftware.AboutSoftWareFragment;
@@ -71,10 +74,11 @@ public class MeTabFragment extends BaseFragment {
         ivIconFragmentMe.setOnClickListener(noDoubleClick);
 
     }
-    View.OnClickListener noDoubleClick=new NoDoubleClickListener() {
+
+    View.OnClickListener noDoubleClick = new NoDoubleClickListener() {
         @Override
         public void onNoDoubleClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.iv_icon_fragment_me:
                     EventBus.getDefault().post(new StartBrotherEvent(AccountDetailFragment.newInstance()));
                     break;
@@ -93,7 +97,27 @@ public class MeTabFragment extends BaseFragment {
                     break;
                 //退出登录
                 case R.id.ll_exit_login_fragment_me:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage("确认退出登录？");
 
+//                    builder.setTitle("提示");
+                    builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            //跳转到登录页面
+                            EventBus.getDefault().post(new StartBrotherEvent(LoginFragment.newInstance()));
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+
+                        }
+
+                    });
+                    builder.create().show();
                     break;
             }
         }

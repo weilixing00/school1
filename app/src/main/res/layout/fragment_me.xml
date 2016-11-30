@@ -26,6 +26,7 @@
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:paddingLeft="30dp"
 			android:layout_marginBottom="8dp"
 			android:orientation="horizontal"
 			>
@@ -40,20 +41,22 @@
 
 			<TextView
 				android:id="@+id/tv_nickname_fragment_me"
-				android:layout_width="wrap_content"
+				android:layout_width="100dp"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="10dp"
 				android:textColor="#fff"
 				android:textSize="15sp"
-				tools:text="昵称"
+				android:text="董一菲"
 				/>
 
 		</LinearLayout>
 
 		<LinearLayout
+			android:paddingLeft="30dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:orientation="horizontal"
+		    android:layout_marginBottom="20dp"
 			>
 
 			<TextView
@@ -66,12 +69,12 @@
 
 			<TextView
 				android:id="@+id/tv_study_num_fragment_me"
-				android:layout_width="wrap_content"
+				android:layout_width="100dp"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="10dp"
 				android:textColor="#fff"
 				android:textSize="15sp"
-				tools:text="学号"
+				android:text="15171189"
 				/>
 
 		</LinearLayout>

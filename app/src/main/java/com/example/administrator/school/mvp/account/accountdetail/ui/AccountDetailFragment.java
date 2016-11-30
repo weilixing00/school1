@@ -41,32 +41,7 @@ import butterknife.ButterKnife;
 public class AccountDetailFragment extends BaseFragment {
 
 
-    @BindView(R.id.iv_back_header)
-    ImageView ivBackHeader;
-    @BindView(R.id.tv_middle_header)
-    TextView tvMiddleHeader;
-    @BindView(R.id.tv_right_header_shadow)
-    TextView tvRightHeaderShadow;
-    @BindView(R.id.layout_header)
-    RelativeLayout layoutHeader;
-    @BindView(R.id.iv_head_icon_fragment_account_detail)
-    RoundedImageView ivHeadIconFragmentAccountDetail;
-    @BindView(R.id.tv_nickname_fragment_account_detail)
-    TextView tvNicknameFragmentAccountDetail;
-    @BindView(R.id.tv_name_fragment_account_detail)
-    TextView tvNameFragmentAccountDetail;
-    @BindView(R.id.tv_sex_fragment_account_detail)
-    TextView tvSexFragmentAccountDetail;
-    @BindView(R.id.tv_school_fragment_account_detail)
-    TextView tvSchoolFragmentAccountDetail;
-    @BindView(R.id.tv_class_fragment_account_detail)
-    TextView tvClassFragmentAccountDetail;
-    @BindView(R.id.tv_date_fragment_account_detail)
-    TextView tvDateFragmentAccountDetail;
-    @BindView(R.id.tv_address_fragment_account_detail)
-    TextView tvAddressFragmentAccountDetail;
-    @BindView(R.id.root_main_fragment_account_detail)
-    LinearLayout rootMainFragmentAccountDetail;
+
     private Uri mDestinationUri;
     private String mTempPhotoPath;
     private static final int GALLERY_REQUEST_CODE = 1004;
@@ -111,7 +86,6 @@ public class AccountDetailFragment extends BaseFragment {
         setOnPictureSelectedListener(new OnPictureSelectedListener() {
             @Override
             public void onPictureSelected(Uri fileUri, Bitmap bitmap) {
-                Toast.makeText(_mActivity, "选择了图片", Toast.LENGTH_SHORT).show();
                 ivHeadIconFragmentAccountDetail.setImageBitmap(bitmap);
                 String filePath = fileUri.getEncodedPath();
                 KLog.e("filePath="+filePath+" bitmap ="+bitmap.getByteCount());
@@ -126,7 +100,7 @@ public class AccountDetailFragment extends BaseFragment {
 
 
     private void showPopupwindow() {
-        final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow( rootMainFragmentAccountDetail, getActivity(),"从相册选择","拍照");
+        final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow( rootMainFragmentAccountDetail,"从相册选择","拍照");
         likeIosPopupWindow.t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -270,4 +244,31 @@ public class AccountDetailFragment extends BaseFragment {
         }
     }
 
+
+    @BindView(R.id.iv_back_header)
+    ImageView ivBackHeader;
+    @BindView(R.id.tv_middle_header)
+    TextView tvMiddleHeader;
+    @BindView(R.id.tv_right_header_shadow)
+    TextView tvRightHeaderShadow;
+    @BindView(R.id.layout_header)
+    RelativeLayout layoutHeader;
+    @BindView(R.id.iv_head_icon_fragment_account_detail)
+    RoundedImageView ivHeadIconFragmentAccountDetail;
+    @BindView(R.id.tv_nickname_fragment_account_detail)
+    TextView tvNicknameFragmentAccountDetail;
+    @BindView(R.id.tv_name_fragment_account_detail)
+    TextView tvNameFragmentAccountDetail;
+    @BindView(R.id.tv_sex_fragment_account_detail)
+    TextView tvSexFragmentAccountDetail;
+    @BindView(R.id.tv_school_fragment_account_detail)
+    TextView tvSchoolFragmentAccountDetail;
+    @BindView(R.id.tv_class_fragment_account_detail)
+    TextView tvClassFragmentAccountDetail;
+    @BindView(R.id.tv_date_fragment_account_detail)
+    TextView tvDateFragmentAccountDetail;
+    @BindView(R.id.tv_address_fragment_account_detail)
+    TextView tvAddressFragmentAccountDetail;
+    @BindView(R.id.root_main_fragment_account_detail)
+    LinearLayout rootMainFragmentAccountDetail;
 }

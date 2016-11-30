@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
 import com.example.administrator.school.mvp.course.credit.applyforrecord.ApplyForRecordFragment;
-import com.example.administrator.school.mvp.course.innovatescore.InnovateScoreFragment;
+import com.example.administrator.school.mvp.course.nationallevelcontest.NationalLevelContestFragment;
 import com.example.administrator.school.utils.NoDoubleClickListener;
 
 import butterknife.BindView;
@@ -66,7 +66,8 @@ public class CreditFragment extends BaseFragment {
                     break;
                 //学分申请  跳转到创新学分申请
                 case R.id.ll_credit_askfor_fragment_credit:
-                    start(InnovateScoreFragment.newInstance());
+//                    start(InnovateScoreFragment.newInstance());
+                    start(NationalLevelContestFragment.newInstance());
                     break;
                 //申请记录
                 case R.id.ll_askfor_record_fragment_credit:

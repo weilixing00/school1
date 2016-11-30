@@ -76,7 +76,7 @@ public class HistoryFragment extends BaseFragment implements RecyclerArrayAdapte
         public void onNoDoubleClick(View v) {
             switch (v.getId()) {
                 case R.id.iv_back_header_noshodow:
-                    JUtils.closeInputMethod(getActivity());
+                    JUtils.hideKeyboard(getActivity());
                     pop();
                     break;
                 case R.id.iv_fragment_history:
@@ -88,7 +88,7 @@ public class HistoryFragment extends BaseFragment implements RecyclerArrayAdapte
 
     @Override
     public boolean onBackPressedSupport() {
-        JUtils.closeInputMethod(getActivity());
+        JUtils.hideKeyboard(getActivity());
         return super.onBackPressedSupport();
     }
 

@@ -74,10 +74,10 @@ dependencies {
 
     //时间选择器
     compile 'com.bigkoo:pickerview:2.1.1'
-    //安卓服务器搭建搭建
-    compile 'com.yanzhenjie:andserver:1.0.1'
+
 
     compile project(':photopicker')
+
     compile files('libs/MobCommons-2016.0830.1940.jar')
     compile files('libs/MobTools-2016.0830.1940.jar')
     compile files('libs/ShareSDK-Core-2.7.7.jar')

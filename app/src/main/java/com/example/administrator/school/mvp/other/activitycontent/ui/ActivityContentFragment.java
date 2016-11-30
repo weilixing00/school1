@@ -5,12 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
 import com.example.administrator.school.utils.NoDoubleClickListener;
+import com.socks.library.KLog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +52,8 @@ public class ActivityContentFragment extends BaseFragment {
     ImageView ivShareFragmentCampagionContent;
     @BindView(R.id.iv_to_top_fragment_activity_content)
     ImageView ivToTopFragmentActivityContent;
+    @BindView(R.id.sv_fragment_campagion_content)
+    ScrollView svFragmentCampagionContent;
 
 
     public static ActivityContentFragment newInstance() {
@@ -69,9 +72,21 @@ public class ActivityContentFragment extends BaseFragment {
     private void initView() {
         tvMiddleHeaderNoshodow.setText("活动内容");
         ivBackHeaderNoshodow.setOnClickListener(noDoubleClick);
-        ivCollectFragmentCampagionContent.setOnClickListener(noDoubleClick);
         ivShareFragmentCampagionContent.setOnClickListener(noDoubleClick);
-        ivToTopFragmentActivityContent.setOnClickListener(noDoubleClick);
+        ivToTopFragmentActivityContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                svFragmentCampagionContent.scrollTo(0,0);
+            }
+        });
+        //演示暂时用没有时间间隔的点击事件 正式时候换回来不能重复点击
+//        ivCollectFragmentCampagionContent.setOnClickListener(noDoubleClick);
+        ivCollectFragmentCampagionContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                collect();
+            }
+        });
 
     }
 
@@ -83,23 +98,31 @@ public class ActivityContentFragment extends BaseFragment {
                 case R.id.iv_back_header_noshodow:
                     pop();
                     break;
-                //滚动顶部
-                case R.id.iv_to_top_fragment_activity_content:
-                    Toast.makeText(_mActivity, "dingbu", Toast.LENGTH_SHORT).show();
-                    break;
+
                 //收藏
                 case R.id.iv_collect_fragment_campagion_content:
-                    Toast.makeText(_mActivity, "收藏", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(_mActivity, "收藏", Toast.LENGTH_SHORT).show();
+                    collect();
                     break;
                 //分享
                 case R.id.iv_share_fragment_campagion_content:
-                    Toast.makeText(_mActivity, "分享", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(_mActivity, "分享", Toast.LENGTH_SHORT).show();
                     showShare();
                     break;
 
             }
         }
     };
+
+
+    private boolean isCollected = false;
+
+    //收藏
+    private void collect() {
+        KLog.e();
+        ivCollectFragmentCampagionContent.setImageResource(isCollected ? R.mipmap.activity_like_normal2x : R.mipmap.activity_like_click2x);
+        isCollected = !isCollected;
+    }
 
     private void showShare() {
         ShareSDK.initSDK(getContext());

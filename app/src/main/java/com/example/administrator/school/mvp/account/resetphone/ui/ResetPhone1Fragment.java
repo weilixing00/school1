@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.administrator.school.R;
 import com.example.administrator.school.base.BaseFragment;
+import com.example.administrator.school.utils.JUtils;
 import com.example.administrator.school.utils.NoDoubleClickListener;
 
 import butterknife.BindView;
@@ -70,6 +71,8 @@ public class ResetPhone1Fragment extends BaseFragment {
         public void onNoDoubleClick(View v) {
             switch (v.getId()){
                 case R.id.iv_back_header:
+                    JUtils.hideKeyboard(getActivity());
+
                     pop();
                     break;
                 case R.id.bt_msg_code_fragment_reset_phone:
@@ -82,6 +85,14 @@ public class ResetPhone1Fragment extends BaseFragment {
             }
         }
     };
+
+
+//
+//    @Override
+//    public boolean onBackPressedSupport() {
+//        JUtils.hideKeyboard(getActivity());
+//        return super.onBackPressedSupport();
+//    }
 
 
 }

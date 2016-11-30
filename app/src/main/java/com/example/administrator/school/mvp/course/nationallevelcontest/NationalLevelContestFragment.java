@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  * 国家级竞赛
  */
 
-public class NationalLevelContestFragment extends BaseFragment implements RecyclerArrayAdapter.OnLoadMoreListener, SwipeRefreshLayout.OnRefreshListener{
+public class NationalLevelContestFragment extends BaseFragment implements RecyclerArrayAdapter.OnLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
 
     @BindView(R.id.iv_back_header)
@@ -44,11 +44,11 @@ public class NationalLevelContestFragment extends BaseFragment implements Recycl
     ImageView ivToTopFragmentNationalLevelContent;
     private NationalLevelAdapter adapter;
 
-
-    public static NationalLevelContestFragment newInstance(){
-        NationalLevelContestFragment fragment=new NationalLevelContestFragment();
+    public static NationalLevelContestFragment newInstance() {
+        NationalLevelContestFragment fragment = new NationalLevelContestFragment();
         return fragment;
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class NationalLevelContestFragment extends BaseFragment implements Recycl
 //        erv.addItemDecoration(itemDecoration);
 
 
-        erv.setAdapterWithProgress(adapter = new NationalLevelAdapter(getContext(),this));
+        erv.setAdapterWithProgress(adapter = new NationalLevelAdapter(getContext(), this));
         adapter.setMore(R.layout.view_more, this);
         adapter.setNoMore(R.layout.view_nomore);
 

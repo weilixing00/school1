@@ -56,7 +56,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 		    android:textColor="@color/shadowGray"
-			tools:text="主讲人:"
+			android:text="李雷"
 		    android:textSize="11sp"
 			/>
 	</LinearLayout>
@@ -80,7 +80,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 		    android:textColor="@color/shadowGray"
-		    tools:text="时间:"
+			android:text="2016-11-12 13:00"
 		    android:textSize="11sp"
 			/>
 	</LinearLayout>
@@ -104,7 +104,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 		    android:textColor="@color/shadowGray"
-		    tools:text="校区:"
+			android:text="小和山校区"
 		    android:textSize="11sp"
 			/>
 	</LinearLayout>
@@ -128,7 +128,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 		    android:textColor="@color/shadowGray"
-		    tools:text="didian:"
+			android:text="逸夫楼第二报告厅南山阶梯教室"
 		    android:textSize="11sp"
 			/>
 	</LinearLayout>

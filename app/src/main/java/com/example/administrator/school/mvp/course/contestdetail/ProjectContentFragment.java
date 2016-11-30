@@ -63,7 +63,7 @@ public class ProjectContentFragment extends BaseFragment {
         ivBackHeader.setOnClickListener(new NoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
-                JUtils.closeInputMethod(getActivity());
+                JUtils.hideKeyboard(getActivity());
                 pop();
             }
         });
@@ -75,7 +75,7 @@ public class ProjectContentFragment extends BaseFragment {
                 Bundle bundle=new Bundle();
                 bundle.putString(KeyConstant.BundleKeyConstant.CONTENT,etFragmentProjectContent.getText().toString().trim());
                 setFramgentResult(RESULT_OK,bundle);
-                JUtils.closeInputMethod(getActivity());
+                JUtils.hideKeyboard(getActivity());
                 pop();
             }
         });
@@ -100,7 +100,7 @@ public class ProjectContentFragment extends BaseFragment {
 
     @Override
     public boolean onBackPressedSupport() {
-        JUtils.closeInputMethod(getActivity());
+        JUtils.hideKeyboard(getActivity());
         return super.onBackPressedSupport();
     }
 }

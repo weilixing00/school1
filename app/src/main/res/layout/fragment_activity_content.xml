@@ -4,10 +4,10 @@
             android:layout_height="match_parent"
             xmlns:tools="http://schemas.android.com/tools">
 <ScrollView
-	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/sv_fragment_campagion_content"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	xmlns:tools="http://schemas.android.com/tools"
+	android:scrollbars="none"
 	>
 
 <LinearLayout
@@ -19,7 +19,7 @@
 		android:id="@+id/iv_picturefragment_campagion_content"
 		android:layout_width="match_parent"
 		android:layout_height="200dp"
-	    android:background="@mipmap/background"
+	    android:background="@mipmap/lunbotu"
 		/>
 
 	<TextView
@@ -49,7 +49,7 @@
 			android:id="@+id/tv_date_fragment_campagion_content"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-		    tools:text="2000:"
+			android:text="2006-12-05"
 		    android:textSize="11sp"
 		    android:textColor="@color/shadowGray"
 			/>
@@ -58,7 +58,7 @@
 			android:layout_marginLeft="10dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-		    tools:text="时间:"
+			android:text="09:50"
 		    android:textSize="11sp"
 		    android:textColor="@color/shadowGray"
 			/>
@@ -81,7 +81,7 @@
 			android:id="@+id/tv_address_fragment_campagion_content"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-		    tools:text="地理位置"
+			android:text="小河山校区"
 		    android:textSize="11sp"
 		    android:textColor="@color/shadowGray"
 			/>
@@ -104,7 +104,7 @@
 			android:id="@+id/tv_host_name_fragment_campagion_content"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-		    tools:text="主办方名称"
+			android:text="浙江科技学院"
 		    android:textSize="11sp"
 		    android:textColor="@color/shadowGray"
 			/>
@@ -128,7 +128,11 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="15dp"
 		android:layout_marginRight="15dp"
-	    tools:text="活动介绍内容"
+		android:layout_marginBottom="50dp"
+		android:text="\t\t\t\t考研一分就能定输赢，所以大家要多拿一分是一分。下面分享数学得分的3个小技巧，大家来看看，参考参考。
+　　\n\n\t\t\t\t第一、分步得分。考研数学试卷中的解答题是按步骤给分的。在考研试卷中，80%的题目是考查基础的，所以大部分考生的情况是，题目有思路会做，但是由于当中计算失误，导致最后的答案是错的。或是会做，但是缺少必要关键的步骤，也不能拿满分，这就是我们平时遇见的“会而不对，对而不全”的老大难问题。纠正这一错误的做法是：要求考生在平时做题时，认真书写解题过程，注意表达要准确、逻辑要紧密、书写要规范，防止被扣分。
+　　\n\n\t\t\t\t第二、缺步答题。若是遇到一个很困难的问题，实在是不能完全做出来。一个聪明的解题策略是，将它们分解成一个个的小问题，先解决问题的一部分，能解决多少就解决多少，能写多少就写多少，尽量不要空白。尤其是一些解题思路比较固定的题目，若是重要的步骤写出来后，虽然结论没有得出，但是分数却可以拿到一半以上，这确实是一个不错的主意。
+　　\n\n\t\t\t\t第三、跳步答题。解题时有思路，但是发现做在一半卡壳了。一般是有两种情况，一是某个知识点或性质忘记了，对于这种情况静下心来捋一下这块的内容，看看会用到哪个知识点。由于考试时间的限制，“卡壳处”的攻克来不及了，那么可以把前面的写下来，再写出“证实某步之后，继续有……”一直做到底，这就是跳步解答。也许，后来中间步骤又想出来，这时不要乱七八糟插上去，可补在后面，“事实上，某步可证明或演算如下”，以保持卷面的工整。"
 	    android:textSize="15sp"
 	    android:textColor="@color/likeBlack"
 		/>
@@ -167,7 +171,7 @@
 				android:layout_width="22dp"
 				android:layout_height="22dp"
 				android:layout_marginLeft="15dp"
-				android:src="@mipmap/activity_like_click2x"
+				android:src="@mipmap/activity_like_normal2x"
 				/>
 			<View
 				android:layout_width="0dp"

@@ -28,21 +28,13 @@
 			android:paddingBottom="0.3dp"
 			/>
 	</FrameLayout>
-	<TextView
-		android:id="@+id/tv_date_fragment_checkinsrecords"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-	    android:text="2016"
-	    android:layout_marginLeft="10dp"
-	    android:textSize="15sp"
-	    android:textColor="@color/likeBlack"
-		/>
+
 	<TextView
 		android:id="@+id/tv_time_fragment_checkinsrecords"
 		android:layout_width="0dp"
 		android:layout_weight="1"
 		android:layout_height="wrap_content"
-	    android:text="2016"
+	    android:text="2016-11-20 13:00"
 	    android:layout_marginLeft="10dp"
 	    android:textSize="15sp"
 	    android:textColor="@color/likeBlack"

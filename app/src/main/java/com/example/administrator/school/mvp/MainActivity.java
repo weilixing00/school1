@@ -35,7 +35,7 @@ public class MainActivity extends SupportActivity {
 
         if (savedInstanceState == null) {
             loadRootFragment(R.id.fl_container, MainFragment.newInstance(0));
-//           loadRootFragment(R.id.fl_container, ActivityContentFragment.newInstance());
+//           loadRootFragment(R.id.fl_container, AccountDetailFragment.newInstance());
         }
 
         //todo 初始化sharesdk  后面参数为sharesdk的id

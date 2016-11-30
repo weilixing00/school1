@@ -38,6 +38,14 @@ public class LoginFragment extends BaseFragment implements ILoginContract.View {
     TextView tvForgetPswFragmentLogin;
     private ILoginContract.Presenter presenter;
 
+
+
+
+    public static  LoginFragment newInstance(){
+        LoginFragment fragment=new LoginFragment();
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

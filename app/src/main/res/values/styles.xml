@@ -87,4 +87,8 @@
         <!--<item name="actionBarPopupTheme">@style/actionBarPopupTheme</item>-->
     </style>
 
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/anim_pop_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_pop_out</item>
+    </style>
 </resources>

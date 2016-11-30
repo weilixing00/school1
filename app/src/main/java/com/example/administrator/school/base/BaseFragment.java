@@ -25,5 +25,9 @@ public class BaseFragment extends SupportFragment{
     }
 
 
-
+    @Override
+    public boolean onBackPressedSupport() {
+//        JUtils.hideKeyboard(getActivity());
+        return super.onBackPressedSupport();
+    }
 }

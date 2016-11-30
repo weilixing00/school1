@@ -12,14 +12,12 @@ import com.jude.easyrecyclerview.adapter.BaseViewHolder;
  */
 public class CheckinsRecordsViewHolder extends BaseViewHolder<CheckinsRecordsBean> {
     TextView tvIndexItemErvFragmentCheckinsrecords;
-    TextView tvDateFragmentCheckinsrecords;
     TextView tvTimeFragmentCheckinsrecords;
     TextView tvTypeFragmentCheckinsrecords;
 
     public CheckinsRecordsViewHolder(ViewGroup parent) {
         super(parent, R.layout.item_erv_item_fragment_checkinsrecords);
         tvIndexItemErvFragmentCheckinsrecords = $(R.id.tv_index_item_erv_fragment_checkinsrecords);
-        tvDateFragmentCheckinsrecords = $(R.id.tv_date_fragment_checkinsrecords);
         tvTimeFragmentCheckinsrecords = $(R.id.tv_time_fragment_checkinsrecords);
         tvTypeFragmentCheckinsrecords = $(R.id.tv_type_fragment_checkinsrecords);
     }

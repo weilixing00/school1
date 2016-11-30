@@ -14,6 +14,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -170,7 +171,7 @@ public class JUtils {
      * 关闭输入法
      * @param act
      */
-    public static void closeInputMethod(Activity act){
+    public static void hideKeyboard(Activity act){
         View view = act.getCurrentFocus();
         if(view!=null){
             ((InputMethodManager)mApplicationContent.getSystemService(Context.INPUT_METHOD_SERVICE)).
@@ -201,7 +202,7 @@ public class JUtils {
      * @param activity
      */
 
-    public static void setBackgroundAlpha(float bgAlpha, Activity activity) {
+    public static void setBackgroundGray(float bgAlpha, Activity activity) {
         WindowManager.LayoutParams lp = activity.getWindow()
                 .getAttributes();
         lp.alpha = bgAlpha;
@@ -209,6 +210,17 @@ public class JUtils {
     }
 
 
+    public static void setBackgroundGray(View view) {
+        view.setBackgroundColor(Color.parseColor("#66666666"));
+//        WindowManager.LayoutParams lp = activity.getWindow()
+//                .getAttributes();
+//        lp.alpha = bgAlpha;
+//        activity.getWindow().setAttributes(lp);
+    }
+    public static void setBackgroundWhite(View view) {
+        view.setBackgroundColor(Color.parseColor("#ffffffff"));
+
+    }
 
     /**
      * 获取当前apk的包名

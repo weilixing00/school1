@@ -13,6 +13,7 @@
         android:textSize="15sp"
         android:maxLength="100"
         android:maxLines="10"
+        android:background="@null"
         android:textColor="@color/likeBlack"/>
     <TextView
         android:id="@+id/tv_fragment_project_content"

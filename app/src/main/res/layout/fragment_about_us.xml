@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:textSize="13sp"
             android:textColor="@color/blue"
-            tools:text="版本号"/>
+            android:text="版本号: 1.0"/>
 </LinearLayout>
     <View
         android:layout_marginLeft="15dp"
@@ -53,10 +53,11 @@
             android:textStyle="bold"
             android:textColor="@color/likeBlack"/>
         <TextView
+            android:id="@+id/tv_phone_fragment_about_us"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            tools:text="400"
+            android:text="4000-1111-1111"
             android:layout_marginLeft="15dp"
             android:textSize="15sp"
             android:textColor="@color/likeBlack"/>
@@ -86,7 +87,7 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textColor="@color/likeBlack"
-        android:text="介绍内容"/>
+        android:text="一般经营项目：教育软件，计算机软件的技术开发，技术服务，成果转让；教育信息咨询。"/>
 
 </LinearLayout>
 

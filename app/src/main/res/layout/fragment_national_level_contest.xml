@@ -25,7 +25,7 @@
 			android:layout_height="wrap_content"
 		    android:textColor="@color/likeBlack"
 		    android:textSize="15sp"
-		    android:text="2016"
+		    android:text="2016年3月1日"
 			/>
 		<TextView
 			android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
 			android:layout_height="wrap_content"
 		    android:textColor="@color/likeBlack"
 		    android:textSize="15sp"
-		    android:text="2017"
+		    android:text="2016年8月1日"
 			/>
 	</LinearLayout>
 	<LinearLayout
@@ -47,6 +47,7 @@
 		android:layout_marginTop="2dp"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:visibility="invisible"
 		android:orientation="horizontal">
 		<TextView
 			android:layout_width="wrap_content"

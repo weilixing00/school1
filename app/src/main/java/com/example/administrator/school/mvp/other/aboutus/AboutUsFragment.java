@@ -42,6 +42,8 @@ public class AboutUsFragment extends BaseFragment {
     LinearLayout llCustomerServerFragmentAboutUs;
     @BindView(R.id.tv_company_info_fragment_about_us)
     TextView tvCompanyInfoFragmentAboutUs;
+    @BindView(R.id.tv_phone_fragment_about_us)
+    TextView tvPhoneFragmentAboutUs;
 
     @Nullable
     @Override
@@ -51,8 +53,9 @@ public class AboutUsFragment extends BaseFragment {
         initView();
         return view;
     }
+
     public static SupportFragment newInstance() {
-        AboutUsFragment fragment=new AboutUsFragment();
+        AboutUsFragment fragment = new AboutUsFragment();
         return fragment;
     }
 
@@ -61,17 +64,18 @@ public class AboutUsFragment extends BaseFragment {
         ivBackHeader.setOnClickListener(noDoubleClick);
         llCustomerServerFragmentAboutUs.setOnClickListener(noDoubleClick);
     }
-    View.OnClickListener noDoubleClick=new NoDoubleClickListener() {
+
+    View.OnClickListener noDoubleClick = new NoDoubleClickListener() {
         @Override
         public void onNoDoubleClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.iv_back_header:
                     pop();
                     break;
                 //客服热线
                 case R.id.ll_customer_server_fragment_about_us:
                     //测试  跳转到拨号页面
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + 10086));
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tvPhoneFragmentAboutUs.getText().toString().trim()));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     break;

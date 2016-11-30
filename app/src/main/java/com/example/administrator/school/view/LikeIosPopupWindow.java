@@ -1,6 +1,5 @@
 package com.example.administrator.school.view;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.administrator.school.R;
 import com.example.administrator.school.utils.JUtils;
+import com.socks.library.KLog;
 
 import static com.example.administrator.school.base.BaseApplication.context;
 
@@ -45,12 +45,14 @@ public class LikeIosPopupWindow extends PopupWindow {
 
     }
 
-    public LikeIosPopupWindow(View rootView, final Activity activity,String text1,String text2) {
-        super(activity);
+    public LikeIosPopupWindow(final View rootView, String text1, String text2) {
+        super(rootView);
         View popView = LayoutInflater.from(context).inflate(
                 R.layout.popupwindow_likeios, null);
         popupWindow = new PopupWindow(popView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        JUtils.setBackgroundAlpha(0.5f,activity);//设置屏幕透明度
+        JUtils.setBackgroundGray(rootView);//设置屏幕透明度
+        KLog.e("view="+rootView);
+
         t1 = (TextView) popView.findViewById(R.id.tv1_pop_likeios);
         t2 = (TextView) popView.findViewById(R.id.tv2_pop_likeios);
         cancel = (Button) popView.findViewById(R.id.bt_cancel_pop_likeios);
@@ -60,20 +62,25 @@ public class LikeIosPopupWindow extends PopupWindow {
 
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
         popupWindow.setFocusable(true);// 点击空白处时，隐藏掉pop窗口
+        popupWindow.setAnimationStyle(R.style.popwin_anim_style);
         // 顯示在根佈局的底部
         popupWindow.showAtLocation(rootView, Gravity.BOTTOM | Gravity.LEFT, 0,
                 0);
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
+                KLog.e("dismiss");
             }
         });
         popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
                 // popupWindow隐藏时恢复屏幕正常透明度
-                JUtils.setBackgroundAlpha(1.0f,activity);
+                JUtils.setBackgroundWhite(rootView);
+                KLog.e("LikeIOS弹框消失");
+
             }
         });
     }

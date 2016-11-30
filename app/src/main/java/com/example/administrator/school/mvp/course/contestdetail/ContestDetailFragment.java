@@ -2,6 +2,7 @@ package com.example.administrator.school.mvp.course.contestdetail;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,52 +63,6 @@ import butterknife.ButterKnife;
 public class ContestDetailFragment extends BaseFragment {
 
 
-    @BindView(R.id.iv_back_header)
-    ImageView ivBackHeader;
-    @BindView(R.id.tv_middle_header)
-    TextView tvMiddleHeader;
-    @BindView(R.id.tv_right_header_shadow)
-    TextView tvRightHeaderShadow;
-    @BindView(R.id.layout_header)
-    RelativeLayout layoutHeader;
-    @BindView(R.id.tv_takeup_time_fragment_contest_detail)
-    TextView tvTakeupTimeFragmentContestDetail;
-    @BindView(R.id.ll_choose_year_fragment_contest_detail)
-    LinearLayout llChooseYearFragmentContestDetail;
-    @BindView(R.id.ll_choose_date_fragment_contest_detail)
-    LinearLayout llChooseDateFragmentContestDetail;
-    @BindView(R.id.iv_declare_type_person_fragment_contest_detail)
-    ImageView ivDeclareTypePersonFragmentContestDetail;
-    @BindView(R.id.tv_declare_type_person_fragment_contest_detail)
-    TextView tvDeclareTypePersonFragmentContestDetail;
-    @BindView(R.id.iv_declare_type_group_fragment_contest_detail)
-    ImageView ivDeclareTypeGroupFragmentContestDetail;
-    @BindView(R.id.tv_declare_type_group_fragment_contest_detail)
-    TextView tvDeclareTypeGroupFragmentContestDetail;
-    @BindView(R.id.et_person_show_fragment_contest_detail)
-    EditText etPersonShowFragmentContestDetail;
-    @BindView(R.id.iv_declare_member_add_fragment_contest_detail)
-    ImageView ivDeclareMemberAddFragmentContestDetail;
-    @BindView(R.id.et_declare_member_add_fragment_contest_detail)
-    TextView etDeclareMemberAddFragmentContestDetail;
-    @BindView(R.id.lv_group_fragment_contest_detail)
-    ListView lvGroupFragmentContestDetail;
-    @BindView(R.id.ll_group_choose_show_fragment_contest_detail)
-    LinearLayout llGroupChooseShowFragmentContestDetail;
-    @BindView(R.id.et_teacher_fragment_contest_detail)
-    EditText etTeacherFragmentContestDetail;
-    @BindView(R.id.et_reslut_name_fragment_contest_detail)
-    EditText etReslutNameFragmentContestDetail;
-    @BindView(R.id.tv_project_name_fragment_contest_detail)
-    TextView tvProjectNameFragmentContestDetail;
-    @BindView(R.id.ll_project_content_fragment_contest_detail)
-    LinearLayout llProjectContentFragmentContestDetail;
-    @BindView(R.id.et_self_declare_fragment_contest_detail)
-    EditText etSelfDeclareFragmentContestDetail;
-    @BindView(R.id.gv_fragment_contest_detail)
-    PhotoGridView gridView;
-    @BindView(R.id.rootview_fragment_contest_detail)
-    LinearLayout rootviewFragmentContestDetail;
     private MyListViewAdapter adapter;
     ArrayList<ContestContent> items = new ArrayList<>();
     private static final int REQUEST_CAMERA_CODE = 10;
@@ -128,6 +84,7 @@ public class ContestDetailFragment extends BaseFragment {
 
     private void initView() {
         tvRightHeaderShadow.setText("完成");
+        tvMiddleHeader.setText("竞赛项目");
         ivBackHeader.setOnClickListener(noDoubleClick);
         tvRightHeaderShadow.setOnClickListener(noDoubleClick);
         llChooseDateFragmentContestDetail.setOnClickListener(noDoubleClick);
@@ -138,8 +95,7 @@ public class ContestDetailFragment extends BaseFragment {
         ivDeclareTypeGroupFragmentContestDetail.setOnClickListener(clickListener);
         tvDeclareTypeGroupFragmentContestDetail.setOnClickListener(clickListener);
         ivDeclareMemberAddFragmentContestDetail.setOnClickListener(clickListener);
-        KLog.e();
-        JUtils.closeInputMethod(getActivity());//默认关闭输入法
+        JUtils.hideKeyboard(getActivity());//默认关闭输入法
         adapter = new MyListViewAdapter(items);
         lvGroupFragmentContestDetail.setAdapter(adapter);
         JUtils.setListViewHeight(lvGroupFragmentContestDetail, adapter, items.size());
@@ -154,7 +110,7 @@ public class ContestDetailFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String imgs = (String) parent.getItemAtPosition(position);
                 if ("000000".equals(imgs) ){
-                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootviewFragmentContestDetail, getActivity(), "从相册选择", "拍照");
+                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootviewFragmentContestDetail, "从相册选择", "拍照");
                     likeIosPopupWindow.t1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -239,19 +195,33 @@ public class ContestDetailFragment extends BaseFragment {
                     break;
                 //完成
                 case R.id.tv_right_header_shadow:
-                    LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootviewFragmentContestDetail, getActivity(), "提交", "保存");
+                    final LikeIosPopupWindow likeIosPopupWindow = new LikeIosPopupWindow(rootviewFragmentContestDetail, "提交", "保存");
                     likeIosPopupWindow.t1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(_mActivity, "提交", Toast.LENGTH_SHORT).show();
+                            likeIosPopupWindow.dismiss();
                         }
                     });
                     likeIosPopupWindow.t2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(_mActivity, "保存", Toast.LENGTH_SHORT).show();
+                            likeIosPopupWindow.dismiss();
+                            rootviewFragmentContestDetail.setBackgroundColor(Color.WHITE);
                         }
                     });
+                    //背景变灰
+//                    rootviewFragmentContestDetail.setBackgroundColor(Color.parseColor("#66666666"));
+
+                    likeIosPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            KLog.e("条框消失！");
+                            rootviewFragmentContestDetail.setBackgroundColor(Color.WHITE);
+                        }
+                    });
+
 
                     break;
                 //项目年份
@@ -630,4 +600,52 @@ private String photoPath;
             ImageView image;
         }
     }
+
+
+    @BindView(R.id.iv_back_header)
+    ImageView ivBackHeader;
+    @BindView(R.id.tv_middle_header)
+    TextView tvMiddleHeader;
+    @BindView(R.id.tv_right_header_shadow)
+    TextView tvRightHeaderShadow;
+    @BindView(R.id.layout_header)
+    RelativeLayout layoutHeader;
+    @BindView(R.id.tv_takeup_time_fragment_contest_detail)
+    TextView tvTakeupTimeFragmentContestDetail;
+    @BindView(R.id.ll_choose_year_fragment_contest_detail)
+    LinearLayout llChooseYearFragmentContestDetail;
+    @BindView(R.id.ll_choose_date_fragment_contest_detail)
+    LinearLayout llChooseDateFragmentContestDetail;
+    @BindView(R.id.iv_declare_type_person_fragment_contest_detail)
+    ImageView ivDeclareTypePersonFragmentContestDetail;
+    @BindView(R.id.tv_declare_type_person_fragment_contest_detail)
+    TextView tvDeclareTypePersonFragmentContestDetail;
+    @BindView(R.id.iv_declare_type_group_fragment_contest_detail)
+    ImageView ivDeclareTypeGroupFragmentContestDetail;
+    @BindView(R.id.tv_declare_type_group_fragment_contest_detail)
+    TextView tvDeclareTypeGroupFragmentContestDetail;
+    @BindView(R.id.et_person_show_fragment_contest_detail)
+    EditText etPersonShowFragmentContestDetail;
+    @BindView(R.id.iv_declare_member_add_fragment_contest_detail)
+    ImageView ivDeclareMemberAddFragmentContestDetail;
+    @BindView(R.id.et_declare_member_add_fragment_contest_detail)
+    TextView etDeclareMemberAddFragmentContestDetail;
+    @BindView(R.id.lv_group_fragment_contest_detail)
+    ListView lvGroupFragmentContestDetail;
+    @BindView(R.id.ll_group_choose_show_fragment_contest_detail)
+    LinearLayout llGroupChooseShowFragmentContestDetail;
+    @BindView(R.id.et_teacher_fragment_contest_detail)
+    EditText etTeacherFragmentContestDetail;
+    @BindView(R.id.et_reslut_name_fragment_contest_detail)
+    EditText etReslutNameFragmentContestDetail;
+    @BindView(R.id.tv_project_name_fragment_contest_detail)
+    TextView tvProjectNameFragmentContestDetail;
+    @BindView(R.id.ll_project_content_fragment_contest_detail)
+    LinearLayout llProjectContentFragmentContestDetail;
+    @BindView(R.id.et_self_declare_fragment_contest_detail)
+    EditText etSelfDeclareFragmentContestDetail;
+    @BindView(R.id.gv_fragment_contest_detail)
+    PhotoGridView gridView;
+    @BindView(R.id.rootview_fragment_contest_detail)
+    LinearLayout rootviewFragmentContestDetail;
 }

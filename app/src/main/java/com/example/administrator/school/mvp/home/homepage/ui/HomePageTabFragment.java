@@ -114,9 +114,8 @@ public class HomePageTabFragment extends BaseFragment {
 
     private void initScrollowBar() {
         List<AutoRollLayout.RollItem> arlList = new ArrayList<>();
-        arlList.add(new AutoRollLayout.RollItem(null, R.mipmap.ic_launcher));
-        arlList.add(new AutoRollLayout.RollItem(null, R.mipmap.ic_launcher));
-        arlList.add(new AutoRollLayout.RollItem(null, R.mipmap.ic_launcher));
+        arlList.add(new AutoRollLayout.RollItem(null, R.mipmap.lunbotu));
+        arlList.add(new AutoRollLayout.RollItem(null, R.mipmap.lunbotu2));
         arlFragmentHomepage.setItems(arlList);
         arlFragmentHomepage.setAutoRoll(true);
     }

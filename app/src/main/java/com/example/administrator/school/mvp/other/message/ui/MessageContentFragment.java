@@ -61,7 +61,7 @@ public class MessageContentFragment extends BaseFragment {
                 pop();
             }
         });
-// TODO: 2016/9/3  tvContentFragmentMessageContent 用settext(\t\t  ) 转义字符保证首行的两个字的间距
+        // TODO: 2016/9/3  tvContentFragmentMessageContent 用settext(\t\t  ) 转义字符保证首行的两个字的间距
 
 
     }
